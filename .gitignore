@@ -1,0 +1,4 @@
+.vagrant/
+Vagrantfile
+centos-6.5.box
+iso/

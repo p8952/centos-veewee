@@ -1,0 +1,32 @@
+Veewee::Definition.declare({
+	:cpu_count   => 1,
+	:memory_size => '512',
+	:disk_size   => '40960',
+	:disk_format => 'VDI',
+	:hostiocache => 'off',
+	:os_type_id  => 'RedHat6_64',
+	:iso_file    => 'CentOS-6.5-x86_64-minimal.iso',
+	:iso_src     => 'http://mirror.bytemark.co.uk/centos/6.5/isos/x86_64/CentOS-6.5-x86_64-minimal.iso',
+	:iso_md5     => '0d9dc37b5dd4befa1c440d2174e88a87',
+	:iso_download_timeout => 10000,
+	:boot_wait => '5',
+	:boot_cmd_sequence => [
+		'<Tab> text ks=http://%IP%:%PORT%/ks.cfg<Enter>',
+	],
+	:kickstart_port    => "7122",
+	:kickstart_timeout => 10000,
+	:kickstart_file    => "ks.cfg",
+	:ssh_login_timeout => '10000',
+	:ssh_user          => 'root',
+	:ssh_password      => 'vagrant',
+	:ssh_host_port     => '2222',
+	:ssh_guest_port    => '22',
+	:shutdown_cmd      => 'shutdown -h now',
+	:postinstall_files => [
+		'repo.sh',	
+		'vagrant.sh',	
+		'virtualbox.sh',	
+		'finish.sh',	
+	],
+	:postinstall_timeout => 10000
+})
